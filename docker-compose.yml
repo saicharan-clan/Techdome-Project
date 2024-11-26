@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  # Backend Service (Express)
+  backend:
+    build:
+      context: ./Techdome-backend # Path to your backend repository
+    container_name: techdome-backend
+    environment:
+      - PORT=5000
+      - DB=mongodb://db:27017/techdome # MongoDB service as database
+      - CLOUD_NAME=your_cloud_name # Cloudinary credentials (replace with your actual keys)
+      - API_KEY=your_api_key
+      - API_SECRET=your_api_secret
+    depends_on:
+      - db # Ensure the database is up before starting the backend
+    ports:
+      - "5000:5000"
+    networks:
+      - techdome-network
+
+  # Frontend Service (React)
+  frontend:
+    build:
+      context: ./Techdome-frontend # Path to your frontend repository
+    container_name: techdome-frontend
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:5000/api # Backend API URL for frontend or use this - REACT_APP_BACKEND_URL=http://54.242.76.1:3000 # Public Backend API URL
+    depends_on:
+      - backend # Ensure the backend is up before starting the frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - techdome-network
+
+  # MongoDB Service
+  db:
+    image: mongo:latest
+	ports:
+      - "27017:27017"
+    container_name: techdome-db
+    volumes:
+      - db-data:/data/db # Persists MongoDB data
+    networks:
+      - techdome-network
+
+networks:
+  techdome-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local
+	
