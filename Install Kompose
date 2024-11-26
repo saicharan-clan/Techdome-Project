@@ -1,3 +1,7 @@
+# We can convert the docker-compose.yml file into Kubernetes manifests using tools like Kompose. 
+# This tool automatically generates Kubernetes YAML files from a Docker Compose file.
+
+
 curl -sSL https://github.com/kubernetes/kompose/releases/download/v1.27.0/kompose-linux-amd64 -o /usr/local/bin/kompose
 sudo chmod +x /usr/local/bin/kompose
 kompose convert -f docker-compose.yml
