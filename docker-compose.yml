@@ -25,7 +25,7 @@ services:
       context: ./Techdome-frontend # Path to your frontend repository
     container_name: techdome-frontend
     environment:
-      - REACT_APP_BACKEND_URL=http://backend:5000/api # Backend API URL for frontend or use this - REACT_APP_BACKEND_URL=http://54.242.76.1:3000 # Public Backend API URL
+      - REACT_APP_BACKEND_URL=http://backend:5000/api # Backend API URL for frontend 
     depends_on:
       - backend # Ensure the backend is up before starting the frontend
     ports:
