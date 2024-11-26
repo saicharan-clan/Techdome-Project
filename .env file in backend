@@ -1,6 +1,0 @@
-DB=mongodb+srv://ssaicharan612@gmail.com:Charan@961@cluster0.mongodb.net/techdome?retryWrites=true&w=majority
-PORT=5000
-SECRET=f2b47dd052a3148743a2833a395fca683ea9af5728c5f84eaa882d07156492e5c6a1007ab515aa726dff2ea11dee69b4de2ad39fc63a65d357bcf0e057664485 (openssl rand -hex 64 > secret_key.txt) openssl rand -hex 64
-CLOUD_NAME=dxxfijux9
-API_KEY=545225668568692
-API_SECRET=xwExRBaXUPGoNI9kT1jlwxmRpKw
