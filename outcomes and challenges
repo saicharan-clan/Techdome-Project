@@ -1,11 +1,13 @@
-I faced issues with both the frontend and backend code in the GitHub repository. The minor issues were due to mistakes in the code, and I encountered challenges while creating Kubernetes resources. 
+I faced issues with both the frontend and backend code in the Backend: https://github.com/Anand-1432/Techdome-backend
+Frontend: https://github.com/Anand-1432/Techdome-frontend GitHub repository. The minor issues were due to mistakes in the code, and I encountered challenges while creating Kubernetes resources. 
 To simplify the process, I used Kompose to convert Docker Compose files into Kubernetes manifests.
 
-The primary issue in the backend was related to how the server was configured to listen for requests. Currently, the backend server listens on process.env.PORT but does not explicitly bind to a host. 
+The primary issue in the Techdome-backend code was related to how the server was configured to listen for requests. Currently, the backend server listens on process.env.PORT but does not explicitly bind to a host. 
 In a containerized environment (like Kubernetes), Express defaults to binding to localhost (127.0.0.1), which makes the server inaccessible from outside the container. To fix this, the server should bind
 to 0.0.0.0 to ensure accessibility within the Kubernetes cluster.
 
-During testing, the signup page had issues because the API was expecting a token, which should not be required for this functionality. However, other features such as login, blog creation 
+During testing, the signup page had issues because the API was expecting a token, which should not be required for this functionality due to some code mistakes in Techdome-frontend git repository. 
+However, other features such as login, blog creation 
 (including uploading images, adding blog titles and descriptions), and logout worked correctly. The GUI for these functionalities behaved as expected.
 
 I verified the functionality of the frontend, backend, and database services locally. Here are the results:
