@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.29.0 (997957870)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: backend
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.29.0 (997957870)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/ubuntu-techdome-network: "true"
+        io.kompose.service: backend
+    spec:
+      containers:
+        - env:
+            - name: API_KEY
+              value: your_api_key
+            - name: API_SECRET
+              value: your_api_secret
+            - name: CLOUD_NAME
+              value: your_cloud_name
+            - name: DB
+              value: mongodb://db:27017/techdome
+            - name: PORT
+              value: "5000"
+          image: saicharan09/backend
+          name: techdome-backend
+          ports:
+            - containerPort: 5000
+          resources: {}
+      restartPolicy: Always
+status: {}
