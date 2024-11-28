@@ -4,16 +4,10 @@ FROM node:16
 # Set the working directory inside the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json (if exists) into the working directory
-COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code into the container
+# Copy the application code into the container
 COPY . .
 
-# Expose the port the app will run on
+# Expose the port the app will run on (assuming your app runs on port 3000)
 EXPOSE 3000
 
 # Command to run the Node.js application
